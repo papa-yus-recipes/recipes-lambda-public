@@ -1,0 +1,14 @@
+**/node_modules
+
+# Emits
+dist/**/*.js
+bundle.js
+recipes-lambda.zip
+
+# Credentials
+.env
+
+# Test & Debug
+npm-debug.log
+firebase-debug.log
+yarn-error.log

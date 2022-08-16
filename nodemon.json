@@ -1,0 +1,5 @@
+{
+  "watch": ["client", "server"],
+  "ext": "ts",
+  "exec": "yarn serve"
+}

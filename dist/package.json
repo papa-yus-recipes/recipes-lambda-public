@@ -1,0 +1,10 @@
+{
+  "name": "recipes-lambda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "papa-yus-recipes",
+  "license": "MIT",
+  "dependencies": {
+    "dynamoose": "^2.8.6"
+  }
+}
