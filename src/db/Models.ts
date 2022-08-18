@@ -29,8 +29,7 @@ export const Recipe = dynamoose.model<RecipeDoc>(
   new dynamoose.Schema({
     id: {
       type: String,
-      default: () => randomUUID(),
-      forceDefault: true
+      default: () => randomUUID()
     },
     name: rangeKey,
     description: required(String),
