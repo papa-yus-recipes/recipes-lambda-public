@@ -15,7 +15,7 @@ const uploadImage = (id: string, data_url: string) =>
     .putObject({
       Bucket: BUCKET,
       Key: s3Key(id),
-      Body: Buffer.from(data_url.replace(/^data:image\/\w+;base64,/, "base64")),
+      Body: Buffer.from(data_url.replace(/^data:image\/\w+;base64,/, ""), "base64"),
       ContentType: `image/${FILE_TYPE}`
     })
     .promise();
