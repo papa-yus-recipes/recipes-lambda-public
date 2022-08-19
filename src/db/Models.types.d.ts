@@ -35,12 +35,12 @@ type ITagReference = Pick<ITag, "name" | "category">;
 
 interface IIngredient {
   main: string;
-  substitutes: Array<string>;
+  substitutes?: Array<string>;
 }
 
 interface IStep {
   step: string;
-  elaboration: string;
+  elaboration?: string;
 }
 
 export interface IRecipe extends HasId {

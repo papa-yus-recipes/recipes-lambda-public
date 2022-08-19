@@ -51,7 +51,7 @@ export const Recipe = dynamoose.model<RecipeDoc>(
         {
           type: Object,
           schema: {
-            main: String,
+            main: required(String),
             substitutes: {
               type: Array,
               schema: [String]
@@ -66,7 +66,7 @@ export const Recipe = dynamoose.model<RecipeDoc>(
         {
           type: Object,
           schema: {
-            step: String,
+            step: required(String),
             elaboration: String
           }
         }
