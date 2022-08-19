@@ -5,6 +5,6 @@
   "author": "papa-yus-recipes",
   "license": "MIT",
   "dependencies": {
-    "dynamoose": "^2.8.6"
+    "dynamoose": "^3.0.0"
   }
 }

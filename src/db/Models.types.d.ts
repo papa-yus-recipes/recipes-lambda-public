@@ -1,5 +1,5 @@
-import type { Document } from "dynamoose/dist/Document";
 import type { ModelType } from "dynamoose/dist/General";
+import type { Item } from "dynamoose/dist/Item";
 import type { Schema, SchemaDefinition } from "dynamoose/dist/Schema";
 
 export type AttributeType =
@@ -14,11 +14,11 @@ export type AttributeType =
   | SetConstructor
   | symbol
   | Schema
-  | ModelType<Document>;
+  | ModelType<Item>;
 
 export type AttributeDefinition = Exclude<SchemaDefinition[string], AttributeType | any[]>;
 
-type Doc<T> = T & Document;
+type Item<T> = T & Item;
 
 interface HasId {
   id: string;
@@ -29,9 +29,9 @@ export interface ITag {
   category: string;
 }
 
-export type TagDoc = Doc<ITag>;
+export type TagItem = Item<ITag>;
 
-type ITagReference = Pick<ITag, "name" | "category">;
+type ITagReference = ITag["name"];
 
 interface IIngredient {
   main: string;
@@ -53,4 +53,4 @@ export interface IRecipe extends HasId {
   steps: Array<IStep>;
 }
 
-export type RecipeDoc = Doc<IRecipe>;
+export type RecipeItem = Item<IRecipe>;
