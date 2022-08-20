@@ -8,11 +8,6 @@ const required = (type: AttributeType): AttributeDefinition => ({
   required: true
 });
 
-const rangeKey: AttributeDefinition = {
-  type: String,
-  rangeKey: true
-};
-
 const isPositiveInt = (n: unknown) => Number.isInteger(n) && <number>n > 0;
 
 const Tag = dynamoose.model<TagItem>("tag", {
@@ -25,7 +20,12 @@ export const Recipe = dynamoose.model<RecipeItem>("recipe", {
     type: String,
     default: () => randomUUID()
   },
-  name: rangeKey,
+  name: {
+    ...required(String),
+    index: {
+      type: "global"
+    }
+  },
   description: required(String),
   tags: {
     ...required(Array),

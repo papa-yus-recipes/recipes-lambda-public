@@ -1,9 +1,6 @@
-import type { IRecipe } from "./Models.types";
+import type { RecipeData, RecipeKey } from "./Models.types";
 
 import { Recipe } from "./Models";
-
-type RecipeKey = Pick<IRecipe, "id" | "name">;
-type RecipeData = Omit<IRecipe, keyof RecipeKey>;
 
 export const createRecipe = (recipe: RecipeData) => Recipe.create(recipe);
 

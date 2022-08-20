@@ -32,13 +32,13 @@ const routes: Routes = {
     return { statusCode: 201, body: JSON.stringify(recipe.toJSON()) };
   },
   "PATCH /": async (event) => {
-    const { id, name, ...body } = extractBody(event);
+    const { id, ...body } = extractBody(event);
     if (body.image) {
       const image = body.image;
       delete body.image;
       await uploadImage(id, image);
     }
-    if (Object.keys(body).length) await updateRecipe({ id, name }, body);
+    if (Object.keys(body).length) await updateRecipe(id, body);
     return { statusCode: 205, body: "Reset Content" };
   },
   "DELETE /": async (event) => {

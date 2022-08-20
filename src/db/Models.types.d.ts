@@ -20,37 +20,43 @@ export type AttributeDefinition = Exclude<SchemaDefinition[string], AttributeTyp
 
 type Item<T> = T & Item;
 
-interface HasId {
+type HasId = {
   id: string;
-}
+};
 
-export interface ITag {
-  name: string;
+export type TagKey = string;
+
+export type Tag = { name: TagKey } & {
   category: string;
-}
+};
 
-export type TagItem = Item<ITag>;
+export type TagItem = Item<Tag>;
 
-type ITagReference = ITag["name"];
+export type RecipeKey = HasId["id"];
 
-interface IIngredient {
+export type RecipeTags = Array<TagKey>;
+
+type Ingredient = {
   main: string;
   substitutes?: Array<string>;
-}
+};
 
-interface IStep {
+type Step = {
   step: string;
   elaboration?: string;
-}
+};
 
-export interface IRecipe extends HasId {
+export type RecipeData = {
   name: string;
   description: string;
-  tags: Array<ITagReference>;
   time: number;
   servings: number;
-  ingredients: Array<IIngredient>;
-  steps: Array<IStep>;
-}
+  ingredients: Array<Ingredient>;
+  steps: Array<Step>;
+};
 
-export type RecipeItem = Item<IRecipe>;
+type BaseRecipe = { id: RecipeKey } & RecipeData;
+
+type Recipe = BaseRecipe & { tags: RecipeTags };
+
+export type RecipeItem = Item<Recipe>;
